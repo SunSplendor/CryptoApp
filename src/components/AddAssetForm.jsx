@@ -15,7 +15,7 @@ const validateMessages = {
 
 export default function AddAssetForm({ onClose }) {
     const [form] = Form.useForm()
-    const {crypto} = useCrypto()
+    const {crypto, addAsset} = useCrypto()
     const [coin, setCoin] = useState(null)
     const [submitted, setSubmitted] = useState(false)
     const assetRef = useRef()
@@ -25,7 +25,7 @@ export default function AddAssetForm({ onClose }) {
             <Result
                 status="success"
                 title="New Asset Has Been Added"
-                subTitle={`Added ${42} of ${coin.name} by price ${24}`}
+                subTitle={`Added ${assetRef.current.amount} of ${coin.name} by price ${assetRef.current.price}`}
                 extra={[
                 <Button type="primary" key="console" onClick={onClose}>
                     Close
@@ -66,6 +66,7 @@ export default function AddAssetForm({ onClose }) {
         }
         assetRef.current = newAsset
         setSubmitted(true)
+        addAsset(newAsset)
     }
 
     function handleAmountChange(value) {

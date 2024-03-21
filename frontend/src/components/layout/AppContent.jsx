@@ -26,7 +26,7 @@ export default function AppContent() {
                 {assets
                     .map((asset) => asset.amount * cryptoPriceMap[asset.id])
 
-                        // First made decision without 'const cryptoPriceMap'
+                        // First made decision was without 'const cryptoPriceMap'
                         // const coin = crypto.find((c) => c.id === asset.id)
                         // return asset.amount * coin.price
                         

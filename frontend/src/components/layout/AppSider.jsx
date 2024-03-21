@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { capitalize } from '../../utils'
 import CryptoContext from '../../context/crypto-context';
 
+// Style for the sidebar layout
 const siderStyle = {
     padding: '1rem',
 }
@@ -11,11 +12,13 @@ const siderStyle = {
 
 
 export default function AppSider() {
-  const {assets} = useContext(CryptoContext)
+  const {assets} = useContext(CryptoContext) // Access assets from CryptoContext
 
   return (
       <Layout.Sider width="25%" style={siderStyle}>
         {assets.map(asset => (
+
+          // Card for each asset displaying statistics
           <Card key={asset.id} style={{marginBottom: '1rem'}}>
           <Statistic 
             title={capitalize(asset.id)}
@@ -25,6 +28,8 @@ export default function AppSider() {
             prefix={asset.grow ? <ArrowUpOutlined /> : <ArrowDownOutlined /> }
             suffix="$"
           />
+
+          {/* List displaying additional asset details */}
           <List
             size="small"
             dataSource={[

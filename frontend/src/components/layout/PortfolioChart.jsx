@@ -7,13 +7,25 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 export default function PortfolioChart() {
     const { assets } = useCrypto()
 
+    // Chart options, including styling for the legend labels
+    const options = {   
+        plugins: {
+            legend: {
+                labels: {
+                    color: 'white' // Setting label text color to white for better visibility
+                }
+            }
+        },
+    }; 
+
+    // Data for the pie chart
     const data = {
-        labels: assets.map((a) => a.name),
+        labels: assets.map((a) => a.name), // Asset names as labels
         datasets: [
             {
                 label: '$',
                 data: assets.map((a) => a.totalAmount),
-                backgroundColor: [
+                backgroundColor: [ // Background colors for each section of the pie chart
                     'rgba(255, 99, 132, 1)',
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 206, 86, 1)',
@@ -29,12 +41,12 @@ export default function PortfolioChart() {
         <div 
             style={{
                 display: 'flex', 
-                marginBottom: '1rem', 
+                marginBottom: '3rem', 
                 justifyContent: 'center', 
-                height: 400
+                height: 400,
             }}
         >
-            <Pie data={data} />
+            <Pie data={data} options={options} />
         </div>
     )
 }

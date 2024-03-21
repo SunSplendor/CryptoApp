@@ -1,3 +1,6 @@
+{/* Fake data previously used to simulate a API database */}
+{/* Retained as an example and for tracking API implementation progress */}
+
 export const cryptoData = {
   result: [
     {

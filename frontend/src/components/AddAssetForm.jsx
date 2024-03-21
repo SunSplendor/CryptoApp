@@ -1,8 +1,9 @@
-import { Select, Space, Typography, Flex, Divider, Form, InputNumber, Button, DatePicker, Result } from 'antd'
+import { Select, Space, Divider, Form, InputNumber, Button, DatePicker, Result } from 'antd'
 import { useState, useRef } from 'react'
 import { useCrypto } from '../context/crypto-context'
 import CoinInfo from '../components/CoinInfo'
 
+// Custom validation messages for the form
 const validateMessages = {
     required: '${label} is required!',
     types: {
@@ -20,6 +21,7 @@ export default function AddAssetForm({ onClose }) {
     const [submitted, setSubmitted] = useState(false)
     const assetRef = useRef()
 
+    // Display success message after asset is added
     if (submitted) {
         return (
             <Result
@@ -35,6 +37,7 @@ export default function AddAssetForm({ onClose }) {
         )
     }
 
+    // Display coin selection if no coin is selected yet
     if (!coin) {
         return (
             <Select
@@ -57,6 +60,7 @@ export default function AddAssetForm({ onClose }) {
         )
     }
     
+    // Function to handle form submission
     function onFinish(values) {
         const newAsset = {
             id: coin.id,
@@ -69,6 +73,7 @@ export default function AddAssetForm({ onClose }) {
         addAsset(newAsset)
     }
 
+    // Calculate total when amount changes
     function handleAmountChange(value) {
         const price = form.getFieldValue('price')
         form.setFieldsValue({
@@ -76,6 +81,7 @@ export default function AddAssetForm({ onClose }) {
         })
     }
 
+    // Calculate total when price changes
     function handlePriceChange(value) {
         const amount = form.getFieldValue('amount')
         form.setFieldsValue({
@@ -83,6 +89,7 @@ export default function AddAssetForm({ onClose }) {
         })
     }
 
+    // Form layout for adding a new asset
     return (
         <Form
             form={form}

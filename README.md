@@ -23,7 +23,10 @@ The Crypto App Project epitomizes my journey in learning the fundamentals of fro
 
 ### Running the Application
 
-To run the project on your local machine, execute the following command:
+To run the project on your local machine, follow these simple instructions:
+- Change the directory to .../CryptoApp/frontend/
+- Execute the following commands:
 
 ```bash
+npm install
 npm run dev
